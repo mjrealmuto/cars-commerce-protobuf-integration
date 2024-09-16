@@ -1,0 +1,153 @@
+syntax = "proto3";
+
+enum CashValueType {
+    CASH_VALUE_UNDETERMINED = 0;
+    CASH_VALUE_STANDARD = 1;
+    CASH_VALUE_TERM_BASED = 2;
+    CASH_VALUE_PERCENTAGE_BASED = 3;
+}
+
+message Incentive {
+  map<string, IncentiveBody> incentives = 1;
+  message IncentiveBody {
+    string title = 1;
+    repeated CashIncentives cash = 2;
+    repeated CashIncentives cash_all = 3;
+    FinanceIncentives finance = 4;
+    repeated FinanceIncentives finance_all = 5;
+    LeaseIncentives lease = 6;
+    repeated LeaseIncentives lease_all = 7;
+    map<string, SpecialIncentives> specials = 8;
+    repeated Disclaimers disclaimers = 9;
+    Vehicle vehicle = 10;
+    string timestamp = 11;
+    string IP = 12;
+    string zipcode = 13;
+    Dealer dealer = 14;
+    Request request = 15;
+    repeated string vin = 16;
+  }
+
+  message CashIncentives {
+    bool is_stackable = 1;
+    string group_affiliation = 2;
+    string previous_ownership = 3;
+    repeated string delivery_type_list = 4;
+    int32 program_id = 5;
+    string program_number = 6;
+    string name = 7;
+    int32 total_cash = 8;
+    CashValueType cash_value_type = 9;
+    int32 cash_value_terms = 10;
+    string start_date = 11;
+    string end_date = 12;
+    Detail details = 13;
+    int32 total = 14;
+    string hash = 15;
+  }
+
+  message FinanceIncentives {
+    string source = 1;
+    string group_affiliation = 2;
+    string previous_ownership = 3;
+    repeated string delivery_type_list = 4;
+    string FinancialInstitution = 5;
+    int32 program_id = 6;
+    string program_number = 7;
+    string name = 8;
+    string ProgramName = 9;
+    repeated CashIncentives cash_incentives = 10;
+    string StartDate = 11;
+    string EndDate = 12;
+    repeated Terms terms = 13;
+    int32 bonus_cash = 14;
+  }
+
+  message LeaseIncentives {
+    string source = 1;
+    string group_affiliation = 2;
+    string previous_ownership = 3;
+    repeated string delivery_type_list = 4;
+    string FinancialInstitution = 5;
+    int32 program_id = 6;
+    string program_number = 7;
+    string name = 8;
+    repeated CashIncentives cash_incentive = 9;
+    string start_date = 10;
+    string end_date = 11;
+    Detail details = 12;
+    Terms terms = 13;
+  }
+
+  message SpecialIncentives {
+    string ProgramName = 1;
+    string name = 2;
+    string group_affiliation = 3;
+    string previous_ownership = 4;
+    string program_id = 5;
+    string StartDate = 6;
+    string EndDate = 7;
+    string description = 8;
+    repeated Detail details = 9;
+    double cash_value = 10;
+  }
+
+  message Disclaimers {
+
+  }
+
+  message Detail {
+    string title = 1;
+    string description = 2;
+    optional string StopDate = 3;
+  }
+
+  message Terms {
+    int32 length = 1;
+    double rate = 2;
+    string per_1000 = 3;
+    string disclosure = 4;
+  }
+
+  message Dealer {
+    string name = 1;
+    string Id = 2;
+    optional string CCID = 3;
+  }
+
+  message Request {
+    string ref = 1;
+    string dealer_id = 2;
+    string zipcode = 3;
+    optional string is_inventory_sync = 4;
+  }
+}
+
+message Vehicle {
+  string vin = 1;
+  int32 year = 2;
+  string make = 3;
+  string model = 4;
+  string trim = 5;
+  string body = 6;
+  int32 msrp = 7;
+  string transmission_description = 8;
+  string model_number = 9;
+  repeated PackageCode packagecode = 10;
+  string thumbnail = 11;
+  string title = 12;
+  Chrome chrome = 13;
+  string chrome_style_id = 14;
+  string OEMStockImage = 15;
+}
+
+message Chrome {
+  string style_id = 1;
+  string model = 2;
+  string trim = 3;
+  string stock_image = 4;
+}
+
+message PackageCode {
+  string code = 1;
+}

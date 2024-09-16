@@ -1,0 +1,24 @@
+{
+    "name": "dealerinspire/cars-commerce-protobuf-integration",
+    "description": "Package the marshalls and unmarshalls protobuf requests",
+    "type": "library",
+    "require": {
+        "google/protobuf": "^4.28"
+    },
+    "scripts": {
+        "protoc": [
+            "bash ./scripts/compile.sh -d $1"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Dealerinspire\\CarsCommerceProtobufIntegration\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Michael Realmuto",
+            "email": "mrealmuto@dealerinspire.com"
+        }
+    ]
+}
