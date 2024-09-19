@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Dealerinspire\\CarsCommerceProtobufIntegration\\": "src/"
+            "Dealerinspire\\CarsCommerceProtobufIntegration\\": "src/classes"
         }
     },
     "authors": [
