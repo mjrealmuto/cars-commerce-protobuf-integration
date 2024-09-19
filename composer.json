@@ -1,5 +1,5 @@
 {
-    "name": "dealerinspire/cars-commerce-protobuf-integration",
+    "name": "mjrealmuto/cars-commerce-protobuf-integration",
     "description": "Package the marshalls and unmarshalls protobuf requests",
     "type": "library",
     "require": {
